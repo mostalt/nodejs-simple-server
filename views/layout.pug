@@ -1,0 +1,32 @@
+doctype
+head
+    title= page
+    meta(charset='utf-8')
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css")
+
+    style
+        | ul.nav a {
+        |    text-transform: capitalize;
+        |}
+body
+    header
+        nav.navbar.navbar-light.bg-faded.m-b-1
+            .container
+                ul.nav.navbar-nav
+                    each link in links
+                        li(class='nav-item'): a(class='nav-link' href=link)=link
+                    li(class='nav-item'): a(class='nav-link' href='/new') New
+    .page-content
+        .container
+            .well
+                if query.name && query.lname
+                    p First Name: #{query.name}
+                    p Last Name: #{query.lname}
+                else
+                    p Unknown user
+
+            .jumbotron
+                h2= page
+
+                block content
+                    p= content
